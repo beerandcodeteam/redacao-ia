@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "beer-and-code-blog": {
+      "type": "http",
+      "url": "https://SEU-BLOG.example.com/mcp/blog",
+      "headers": {
+        "Authorization": "Bearer SEU_BLOG_MCP_TOKEN"
+      }
+    },
+    "analytics-mcp": {
+      "command": "pipx",
+      "args": ["run", "analytics-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/caminho/absoluto/para/.config/gcloud/application_default_credentials.json",
+        "GOOGLE_PROJECT_ID": "seu-projeto-gcp"
+      }
+    },
+    "gscServer": {
+      "command": "uvx",
+      "args": ["mcp-search-console"],
+      "env": {
+        "GSC_OAUTH_CLIENT_SECRETS_FILE": "/caminho/absoluto/para/.config/mcp-gsc/client_secret.json"
+      }
+    },
+    "dfs-mcp": {
+      "type": "http",
+      "url": "https://mcp.dataforseo.com/v3/mcp",
+      "headers": {
+        "Authorization": "Basic BASE64_DE_LOGIN:SENHA_DATAFORSEO"
+      }
+    }
+  }
+}

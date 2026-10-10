@@ -1,0 +1,72 @@
+# Repositório PÚBLICO. Este .gitignore funciona como allowlist: tudo na raiz é
+# ignorado por padrão e só entra o que está liberado explicitamente abaixo.
+# Assim um arquivo de credencial solto na raiz (client_secret_*.json, .env,
+# export de workflow, etc.) nunca é versionado por acidente.
+
+/*
+
+# ---------- o que é publicado ----------
+!/.gitignore
+!/.env.example
+!/.mcp.json.example
+!/README.md
+!/LICENSE
+!/requirements.txt
+!/docs/
+!/.claude/
+!/scripts/
+!/seo-report/
+!/pautas/
+!/drafts/
+
+# ---------- credenciais (nunca versionar, em pasta nenhuma) ----------
+.env
+.env.*
+!.env.example
+.mcp.json
+client_secret_*.json
+application_default_credentials.json
+token.json
+*.pem
+*.key
+*.bak-*
+*.bak
+
+# ---------- Claude Code ----------
+# config local de cada máquina
+.claude/settings.local.json
+# snapshots do detector de news-jacking (estado local, regenerado a cada run)
+.claude/skills/cacar-news-jacking/state/*
+!.claude/skills/cacar-news-jacking/state/.gitkeep
+# amostra de voz usada no clone do TTS: dado biométrico, cada um grava a sua
+.claude/skills/criar-post-blog/voice/*
+!.claude/skills/criar-post-blog/voice/README.md
+# playbook comercial interno (preços, objeções, prova social)
+.claude/skills/montar-cta-pitch/references/arsenal-pitch-cla.md
+
+# ---------- painel SEO ----------
+# snapshot com dados reais de Search Console / GA4 (gerado por generate.py)
+seo-report/data.json
+
+# ---------- ambientes e caches ----------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+
+# ---------- IDE / SO ----------
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# ---------- logs e temporários ----------
+*.log
+*.tmp
